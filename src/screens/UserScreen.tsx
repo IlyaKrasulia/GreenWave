@@ -41,9 +41,7 @@ const UserScreen = () => {
             </>
           )}
       </View>
-      <View style={{flex: 1, top: 225}}>
         <NavigateBar />
-      </View>
     </AppLayout>
   );
 };

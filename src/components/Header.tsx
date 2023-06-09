@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.greenLine,
     height: 100,
     width: screenWidth,
-    top: -60,
+    top: -50,
     paddingTop: 60,
   },
 });

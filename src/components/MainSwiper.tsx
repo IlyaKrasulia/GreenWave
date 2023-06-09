@@ -19,19 +19,9 @@ const MainSwiper = () => {
 };
 
 const styles = StyleSheet.create({
-  wrapper: {},
+  wrapper: { height: 100},
   slide: {
     backgroundColor: 'red',
-    width: '100%',
-    height: 100,
-  },
-  slide1: {
-    backgroundColor: 'green',
-    width: '100%',
-    height: 100,
-  },
-  slide2: {
-    backgroundColor: 'black',
     width: '100%',
     height: 100,
   },

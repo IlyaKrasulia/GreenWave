@@ -34,7 +34,7 @@ const HistoryScreen = () => {
               </SFlex>
             </View>
           );
-        }) :  <SFlex flexDirection="column" marginTop={150}>
+        }) :  <SFlex flexDirection="column" alignItems='center'>
           <Image
             source={require('../assets/icons/clipboard.png')}
             style={{width: 200, height: 200}}
