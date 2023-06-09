@@ -6,7 +6,7 @@ export const typography = StyleSheet.create({
     fontSize: 34,
     lineHeight: 40,
     letterSpacing: 0.2,
-    fontFamily: Fonts.medium,
+    fontFamily: Fonts.bold,
   },
   h2: {
     fontSize: 28,
@@ -18,7 +18,7 @@ export const typography = StyleSheet.create({
     fontSize: 20,
     lineHeight: 26,
     letterSpacing: 0.2,
-    fontFamily: Fonts.semiBold,
+    fontFamily: Fonts.bold,
   },
   h3Medium: {
     fontSize: 20,
@@ -37,6 +37,12 @@ export const typography = StyleSheet.create({
     lineHeight: 24,
     letterSpacing: 0.4,
     fontFamily: Fonts.medium,
+  },
+  t1bold: {
+    fontSize: 18,
+    lineHeight: 24,
+    letterSpacing: 0.4,
+    fontFamily: Fonts.bold,
   },
   t2: {
     fontSize: 18,

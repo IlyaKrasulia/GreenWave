@@ -23,7 +23,7 @@ interface IProps {
   textTransform?: TextTransformType;
   opacity?: number;
   letterSpacing?: number;
-  type?: 'h1' | 'h2' | 'h3' | 'h3Medium' | 'h3SemiBold' | 't1' | 't2' | 't3' | 't4' | 't5' | 't5Bold' | 't6' | 'button' | 't6Regular';
+  type?: 'h1' | 'h2' | 'h3' | 'h3Medium' | 'h3SemiBold' | 't1' | 't1bold' | 't2' | 't3' | 't4' | 't5' | 't5Bold' | 't6' | 'button' | 't6Regular';
   children: React.ReactNode;
   numberOfLines?: number;
   lineBreakMode?: 'tail' | 'clip' | 'middle' | 'head';
