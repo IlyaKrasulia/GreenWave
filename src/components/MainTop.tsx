@@ -1,9 +1,9 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Image} from 'react-native';
-import {Colors} from 'utils/styles';
-import {SText} from './Styled/SText';
-import {SFlex} from './Styled/SFlex';
-import {SButton} from './Styled/SButton';
+import { StyleSheet, Image, View } from 'react-native';
+import { Colors } from 'utils/styles';
+import { SText } from './Styled/SText';
+import { SFlex } from './Styled/SFlex';
+import { SButton } from './Styled/SButton';
 import { useNavigation } from '@react-navigation/native';
 import { ScreenEnum } from 'utils/types';
 
@@ -13,12 +13,12 @@ interface IProps {
     coffee: number,
 }
 
-const MainTop = ({balance, oil, coffee}: IProps) => {
+const MainTop = ({ balance, oil, coffee }: IProps) => {
   const { navigate }: any = useNavigation();
 
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <SText marginTop={100} textAlign="center" color={Colors.white} type="t3">
+    <View style={styles.wrapper}>
+      <SText marginTop={60} textAlign="center" color={Colors.white} type="t3">
         Мій баланс
       </SText>
       <SFlex justifyContent="center" marginTop={10}>
@@ -33,12 +33,13 @@ const MainTop = ({balance, oil, coffee}: IProps) => {
         <SButton
           onPress={() => navigate(ScreenEnum.History)}
           baseColor="#00000023"
-          styleBtn={{paddingVertical: 5, paddingHorizontal: 25}}
-          borderRadius={20}>
+          styleBtn={{ paddingVertical: 5, paddingHorizontal: 25 }}
+          borderRadius={20}
+        >
           <SFlex alignItems="center">
             <Image
               source={require('../assets/icons/history.png')}
-              style={{height: 20, width: 20}}
+              style={{ height: 20, width: 20 }}
             />
             <SText marginStart={5} color={Colors.white} type="t3">
               Історія
@@ -46,8 +47,13 @@ const MainTop = ({balance, oil, coffee}: IProps) => {
           </SFlex>
         </SButton>
       </SFlex>
-      <SFlex justifyContent='center' marginTop={50}>
-        <SButton onPress={() => navigate(ScreenEnum.Balance)} baseColor='#ffffff35' borderRadius={40} styleBtn={{padding: 15}}>
+      <SFlex justifyContent="center" marginTop={50}>
+        <SButton
+          onPress={() => navigate(ScreenEnum.Balance)}
+          baseColor="#ffffff35"
+          borderRadius={40}
+          styleBtn={{ padding: 15 }}
+        >
           <SFlex>
             <SText color={Colors.white}>Гаманець</SText>
             <SText color={Colors.white} marginStart={40}>{oil} л</SText>
@@ -55,17 +61,16 @@ const MainTop = ({balance, oil, coffee}: IProps) => {
           </SFlex>
         </SButton>
       </SFlex>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: Colors.greenLine,
-    top: -60,
-    height: 350,
+    paddingBottom: 30,
     borderBottomEndRadius: 20,
-    borderBottomStartRadius: 20
+    borderBottomStartRadius: 20,
   },
 });
 

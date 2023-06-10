@@ -1,11 +1,10 @@
-import {AppLayout} from 'components/Layout/AppLayout';
-import {SButton} from 'components/Styled/SButton';
-import {SFlex} from 'components/Styled/SFlex';
-import {SText} from 'components/Styled/SText';
-import {SView} from 'components/Styled/SView';
+import { SButton } from 'components/Styled/SButton';
+import { SFlex } from 'components/Styled/SFlex';
+import { SText } from 'components/Styled/SText';
+import { SView } from 'components/Styled/SView';
 import React from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
-import {Colors, screenHeight} from 'utils/styles';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { Colors, screenHeight } from 'utils/styles';
 
 const ConfirmCodeScreen = () => {
   return (
@@ -15,7 +14,8 @@ const ConfirmCodeScreen = () => {
           color={Colors.white}
           textAlign="center"
           marginTop={200}
-          type="h3">
+          type="h3"
+        >
           Авторизація
         </SText>
         <SText color={Colors.white} opacity={0.8} type="t4" marginTop={50}>
@@ -28,14 +28,15 @@ const ConfirmCodeScreen = () => {
           Код з SMS
         </SText>
         <TextInput style={styles.input} value="" />
-        <SFlex justifyContent='center'>
+        <SFlex justifyContent="center">
           <SButton
             onPress={() => {}}
             baseColor={Colors.white}
             activeColor={Colors.extraGreen}
             styleBtn={styles.codeButton}
-            borderRadius={5}>
-            <SText color={Colors.greenLine} textAlign="center" type='t4'>
+            borderRadius={5}
+          >
+            <SText color={Colors.greenLine} textAlign="center" type="t4">
               Надіслати новий код
             </SText>
           </SButton>
@@ -46,7 +47,8 @@ const ConfirmCodeScreen = () => {
         baseColor={Colors.white}
         activeColor={Colors.extraGreen}
         styleBtn={styles.button}
-        borderRadius={5}>
+        borderRadius={5}
+      >
         <SText color={Colors.greenLine} textAlign="center">
           ДАЛІ
         </SText>
@@ -78,8 +80,8 @@ const styles = StyleSheet.create({
   codeButton: {
     marginTop: 25,
     padding: 5,
-    paddingHorizontal: 10
-  }
+    paddingHorizontal: 10,
+  },
 });
 
 export default ConfirmCodeScreen;

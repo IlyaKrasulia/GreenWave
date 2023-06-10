@@ -1,29 +1,25 @@
-import {AppLayout} from 'components/Layout/AppLayout';
-import {SFlex} from 'components/Styled/SFlex';
-import {SText} from 'components/Styled/SText';
-import React, { useState } from 'react';
-import {Image, StyleSheet, View} from 'react-native';
-import {SView} from './Styled/SView';
-import {Colors, screenWidth} from 'utils/styles';
-import {SButton} from './Styled/SButton';
-import BuyGasModal from './BuyGasModal';
+import { SFlex } from 'components/Styled/SFlex';
+import { SText } from 'components/Styled/SText';
+import React, { } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { SView } from './Styled/SView';
+import { Colors, screenWidth } from 'utils/styles';
+import { SButton } from './Styled/SButton';
+import { OilType } from 'utils/models';
 
 interface IProps {
-  typeOil: '95' | 'A-95' | 'ДП' | 'ГАЗ';
+  typeOil: OilType;
   produser: 'Mustang' | 'Євро5';
   color: string;
   price: number;
+  setActiveGas: () => void;
 }
 
-const GasItemPrice = ({typeOil, produser, color, price}: IProps) => {
-  const [ modal, setModal] = useState(false)
+const GasItemPrice = ({ typeOil, produser, color, price, setActiveGas }: IProps) => {
 
-  const closeModal = () => {
-    setModal(false);
-  }
   return (
     <SView marginTop={10}>
-      <View style={styles.line}></View>
+      <View style={styles.line} />
       <SFlex marginTop={10} justifyContent="space-between" alignItems="center">
         <SView marginLeft={15}>
           <SText textAlign="center" color={color}>
@@ -35,17 +31,17 @@ const GasItemPrice = ({typeOil, produser, color, price}: IProps) => {
         </SView>
         <SText>{price.toLocaleString()} ₴</SText>
         <SButton
-          onPress={() => setModal(true)}
+          onPress={() => setActiveGas()}
           baseColor={Colors.greenLine}
           // activeColor={Colors.extraGreen}
           styleBtn={styles.button}
-          borderRadius={5}>
+          borderRadius={5}
+        >
           <SText color={Colors.white} textAlign="center">
             ПРИДБАТИ
           </SText>
         </SButton>
       </SFlex>
-      <BuyGasModal price={price} produser={produser} typeGas={typeOil} modal={modal} closeModal={closeModal}/>
     </SView>
   );
 };

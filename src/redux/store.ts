@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './slices/userSlice'
+import banersSclice from './slices/banersSclice'
 
 export const store = configureStore({
   reducer: {
     user: userSlice,
+    baners: banersSclice
   },
 })
 

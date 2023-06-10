@@ -1,16 +1,15 @@
 import Header from 'components/Header';
-import {AppLayout} from 'components/Layout/AppLayout';
-import {SFlex} from 'components/Styled/SFlex';
-import {SText} from 'components/Styled/SText';
+import { AppLayout } from 'components/Layout/AppLayout';
+import { SFlex } from 'components/Styled/SFlex';
+import { SText } from 'components/Styled/SText';
 import React from 'react';
-import {Image, ScrollView, StyleSheet, View} from 'react-native';
-import {useSelector} from 'react-redux';
-import {RootState} from 'redux/store';
-import {Colors} from 'utils/styles';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
+import { Colors } from 'utils/styles';
 
 const HistoryScreen = () => {
   const data = useSelector((state: RootState) => state.user.history);
-  
 
   return (
     <AppLayout>
@@ -18,7 +17,7 @@ const HistoryScreen = () => {
       <ScrollView style={styles.wrapper}>
         {data.length > 0 ? data.map((it: any, index: number) => {
           return (
-            <View style={styles.item}>
+            <View style={styles.item} key={index}>
               <SFlex justifyContent="space-between">
                 <View>
                   <SText type="t5">Дата</SText>
@@ -34,16 +33,16 @@ const HistoryScreen = () => {
               </SFlex>
             </View>
           );
-        }) :  <SFlex flexDirection="column" alignItems='center'>
+        }) :  <SFlex flexDirection="column" alignItems="center">
           <Image
             source={require('../assets/icons/clipboard.png')}
-            style={{width: 200, height: 200}}
+            style={{ width: 200, height: 200 }}
           />
-          <SText textAlign='center' marginTop={30}>
+          <SText textAlign="center" marginTop={30}>
             Поповнюйте та використовуйте гаманец, купляйте на АЗК, робіть
             подарунки
           </SText>
-          <SText type='t4' marginTop={20}>Всі ваші операції будуть відображені тут</SText>
+          <SText type="t4" marginTop={20}>Всі ваші операції будуть відображені тут</SText>
         </SFlex>}
       </ScrollView>
     </AppLayout>
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 20,
     borderRadius: 20,
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
 

@@ -1,59 +1,62 @@
-import React, { useState } from 'react';
-import {ModalWrapper} from './ModalWrapper';
-import {KeyboardAvoidingView, StyleSheet, TextInput, View} from 'react-native';
-import {SText} from './Styled/SText';
-import {SFlex} from './Styled/SFlex';
-import {Colors} from 'utils/styles';
-import {SButton} from './Styled/SButton';
-import { useDispatch } from 'react-redux';
-import { buyGas } from 'redux/slices/userSlice';
-import axios from 'axios';
+import React, { } from 'react';
+import { ModalWrapper } from './ModalWrapper';
+import { KeyboardAvoidingView, StyleSheet, TextInput, View } from 'react-native';
+import { SText } from './Styled/SText';
+import { SFlex } from './Styled/SFlex';
+import { Colors } from 'utils/styles';
+import { SButton } from './Styled/SButton';
+import { IGas } from 'utils/models';
 
 interface IProps {
     modal: boolean;
     closeModal: any;
-    typeGas: string;
-    produser: string;
-    price: number;
+    item?: IGas;
+    setAmount: (val: string) => void;
+    amount: string;
+    handleBuyGas: () => void;
 }
 
-const BuyGasModal = ({modal, closeModal, typeGas, produser, price}: IProps) => {
-    const [amount, setAmount] = useState('');
-    const dispatch = useDispatch();
+const BuyGasModal = ({
+  modal,
+  closeModal,
+  item,
+  amount,
+  handleBuyGas,
+  setAmount }: IProps) => {
 
-    const handleBuyGas = () => {
-      dispatch(buyGas([typeGas, produser, amount, price]));
-      let data = {
-        typeGas: typeGas,
-        produser: typeGas,
-        amount: amount,
-        price: amount * price,
-      }
-      axios.post('https://6480f41ef061e6ec4d4a1d0d.mockapi.io/sales', data)
-      setAmount('0');
-      closeModal();
-    }
   return (
     <ModalWrapper close={() => closeModal()} isVisible={modal}>
-      <KeyboardAvoidingView style={styles.wrapper}>
-        <SFlex justifyContent="space-between">
-          <View>
-            <SText>{typeGas}</SText>
-            <SText type="t4">{produser}</SText>
-          </View>
-          <TextInput placeholder="23 л." style={styles.input} onChangeText={(text) => setAmount(text)} />
-        </SFlex>
+      {item ? (
+        <KeyboardAvoidingView style={styles.wrapper}>
+          <SFlex justifyContent="space-between">
+            <View>
+              <SText>{item.typeOil}</SText>
+              <SText type="t4">{item.produser}</SText>
+            </View>
+            <TextInput
+              placeholder="23 л."
+              style={styles.input}
+              value={amount}
+              onChangeText={val => setAmount(val)}
+            />
+          </SFlex>
           <SButton
             onPress={handleBuyGas}
             baseColor={Colors.greenLine}
             styleBtn={styles.button}
             borderRadius={5}
-            marginTop={20}>
+            marginTop={20}
+          >
             <SText color={Colors.white} textAlign="center">
-              Придбати за {Number(amount) * price} ₴
+            Придбати за {(Number(amount) * item.price).toFixed(2)} ₴
             </SText>
           </SButton>
-      </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
+      ) : (
+        <SText textAlign="center" marginTop={20} marginBottom={20}>
+          Виберіть топливо
+        </SText>
+      )}
     </ModalWrapper>
   );
 };
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
   wrapper: {
     paddingVertical: 50,
     paddingHorizontal: 20,
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   input: {
     fontSize: 30,

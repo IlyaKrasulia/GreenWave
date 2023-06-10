@@ -1,20 +1,20 @@
-import {useNavigation} from '@react-navigation/native';
-import {AppLayout} from 'components/Layout/AppLayout';
-import {SButton} from 'components/Styled/SButton';
-import {SFlex} from 'components/Styled/SFlex';
-import {SText} from 'components/Styled/SText';
-import {SView} from 'components/Styled/SView';
-import React, {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {addName} from 'redux/slices/userSlice';
-import {RootState} from 'redux/store';
-import {Colors, screenHeight} from 'utils/styles';
-import {ScreenEnum} from 'utils/types';
+import { useNavigation } from '@react-navigation/native';
+import { AppLayout } from 'components/Layout/AppLayout';
+import { SButton } from 'components/Styled/SButton';
+import { SFlex } from 'components/Styled/SFlex';
+import { SText } from 'components/Styled/SText';
+import { SView } from 'components/Styled/SView';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { addName } from 'redux/slices/userSlice';
+import { RootState } from 'redux/store';
+import { Colors } from 'utils/styles';
+import { ScreenEnum } from 'utils/types';
 
 const RegisterScreen = () => {
   const dispatch = useDispatch();
-  const {navigate}: any = useNavigation();
+  const { navigate } = useNavigation();
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [userType, setUserType] = useState('');
@@ -27,93 +27,103 @@ const RegisterScreen = () => {
   };
 
   return (
-    <View style={styles.wrapper}>
-      <SView flex={1}>
-        <SText
-          color={Colors.white}
-          textAlign="center"
-          marginTop={200}
-          type="h3"
-          marginBottom={100}>
+    <AppLayout screenBackgroundColor={Colors.greenLine}>
+      <View style={styles.wrapper}>
+        <SView flex={1}>
+          <SText
+            color={Colors.white}
+            textAlign="center"
+            type="h3"
+            marginBottom={100}
+            marginTop={100}
+          >
           Реэстрація
-        </SText>
-        <TextInput
-          placeholder="Прізвище"
-          placeholderTextColor={Colors.white}
-          style={styles.input}
-          onChangeText={text => setLastName(text)}
-          value={lastName}
-        />
-        <TextInput
-          placeholder="Ім'я"
-          placeholderTextColor={Colors.white}
-          style={styles.input}
-          onChangeText={text => setName(text)}
-          value={name}
-        />
-        <SFlex
-          alignItems="center"
-          flexDirection="column"
-          justifyContent="center">
-          <SButton
-            baseColor={userType === 'Користувач' ? Colors.darkGrey : Colors.grey}
-            onPress={() => setUserType('Користувач')}
-            styleBtn={styles.typeUserButton}
-            activeColor={Colors.lightGrey}
-            borderRadius={10}>
-            <SText
-              textAlign="center"
-              color={userType === 'Користувач' ? Colors.white : Colors.black}>
+          </SText>
+          <TextInput
+            placeholder="Прізвище"
+            placeholderTextColor={Colors.white}
+            style={styles.input}
+            onChangeText={text => setLastName(text)}
+            value={lastName}
+          />
+          <TextInput
+            placeholder="Ім'я"
+            placeholderTextColor={Colors.white}
+            style={styles.input}
+            onChangeText={text => setName(text)}
+            value={name}
+          />
+          <SFlex
+            alignItems="center"
+            flexDirection="column"
+            justifyContent="center"
+          >
+            <SButton
+              baseColor={userType === 'Користувач' ? Colors.darkGrey : Colors.grey}
+              onPress={() => setUserType('Користувач')}
+              styleBtn={styles.typeUserButton}
+              activeColor={Colors.lightGrey}
+              borderRadius={10}
+            >
+              <SText
+                textAlign="center"
+                color={userType === 'Користувач' ? Colors.white : Colors.black}
+              >
               Користувач
-            </SText>
-          </SButton>
-          <SButton
-            marginLeft={5}
-            marginRight={5}
-            baseColor={userType === 'Касир' ? Colors.darkGrey : Colors.grey}
-            onPress={() => setUserType('Касир')}
-            styleBtn={styles.typeUserButton}
-            activeColor={Colors.lightGrey}
-            borderRadius={10}>
-            <SText
-              textAlign="center"
-              color={userType === 'Касир' ? Colors.white : Colors.black}>
+              </SText>
+            </SButton>
+            <SButton
+              marginLeft={5}
+              marginRight={5}
+              baseColor={userType === 'Касир' ? Colors.darkGrey : Colors.grey}
+              onPress={() => setUserType('Касир')}
+              styleBtn={styles.typeUserButton}
+              activeColor={Colors.lightGrey}
+              borderRadius={10}
+            >
+              <SText
+                textAlign="center"
+                color={userType === 'Касир' ? Colors.white : Colors.black}
+              >
               Касир
-            </SText>
-          </SButton>
-          <SButton
-            baseColor={userType === 'Адміністратор' ? Colors.darkGrey : Colors.grey}
-            onPress={() => setUserType('Адміністратор')}
-            styleBtn={styles.typeUserButton}
-            activeColor={Colors.lightGrey}
-            borderRadius={10}>
-            <SText
-              textAlign="center"
-              color={userType === 'Адміністратор' ? Colors.white : Colors.black}>
+              </SText>
+            </SButton>
+            <SButton
+              baseColor={userType === 'Адміністратор' ? Colors.darkGrey : Colors.grey}
+              onPress={() => setUserType('Адміністратор')}
+              styleBtn={styles.typeUserButton}
+              activeColor={Colors.lightGrey}
+              borderRadius={10}
+            >
+              <SText
+                textAlign="center"
+                color={userType === 'Адміністратор' ? Colors.white : Colors.black}
+              >
               Адміністратор
-            </SText>
-          </SButton>
-        </SFlex>
-      </SView>
-      <SButton
-        onPress={submitName}
-        baseColor={Colors.white}
-        activeColor={Colors.extraGreen}
-        styleBtn={styles.button}
-        borderRadius={5}>
-        <SText color={Colors.greenLine} textAlign="center">
+              </SText>
+            </SButton>
+          </SFlex>
+        </SView>
+        <SButton
+          onPress={submitName}
+          baseColor={Colors.white}
+          activeColor={Colors.extraGreen}
+          styleBtn={styles.button}
+          borderRadius={5}
+        >
+          <SText color={Colors.greenLine} textAlign="center">
           ДАЛІ
-        </SText>
-      </SButton>
-    </View>
+          </SText>
+        </SButton>
+      </View>
+    </AppLayout>
   );
 };
 
 const styles = StyleSheet.create({
   wrapper: {
+    flex: 1,
     backgroundColor: Colors.greenLine,
-    height: screenHeight + 80,
-    bottom: 60,
     paddingHorizontal: 30,
   },
   input: {
@@ -128,7 +138,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginLeft: 15,
     marginRight: 15,
-    top: -60,
+    marginBottom: 20,
   },
   typeUserButton: {
     padding: 10,

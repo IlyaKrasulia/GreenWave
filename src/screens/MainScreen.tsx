@@ -1,30 +1,29 @@
-import {useNavigation} from '@react-navigation/native';
-import {AppLayout} from 'components/Layout/AppLayout';
+import { useNavigation } from '@react-navigation/native';
+import { AppLayout } from 'components/Layout/AppLayout';
 import MainStore from 'components/MainStore';
 import MainSwiper from 'components/MainSwiper';
 import MainTop from 'components/MainTop';
 import NavigateBar from 'components/NavigateBar';
-import {SButton} from 'components/Styled/SButton';
-import {SFlex} from 'components/Styled/SFlex';
-import {SText} from 'components/Styled/SText';
+import { SButton } from 'components/Styled/SButton';
+import { SFlex } from 'components/Styled/SFlex';
+import { SText } from 'components/Styled/SText';
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
-import {useSelector} from 'react-redux';
-import {RootState} from 'redux/store';
-import {Colors} from 'utils/styles';
-import {ScreenEnum} from 'utils/types';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
+import { Colors } from 'utils/styles';
+import { ScreenEnum } from 'utils/types';
 
 const MainScreen = () => {
-  const {navigate}: any = useNavigation();
-  const userData = useSelector((state: RootState) => state.user);
 
-  console.log(userData);
+  const { navigate } = useNavigation();
+  const userData = useSelector((state: RootState) => state.user);
 
   return (
     <AppLayout>
       <MainTop balance={userData.balance} oil={21} coffee={4} />
-      <ScrollView style={{paddingVertical: 40, paddingBottom: 140}}>
-      <MainStore />
+      <ScrollView contentContainerStyle={styles.container}>
+        <MainStore />
         <MainSwiper />
         <View style={styles.midleButtons}>
           <SFlex justifyContent="space-between">
@@ -35,7 +34,7 @@ const MainScreen = () => {
                 </SText>
               </View>
             </SButton>
-            <View style={styles.line}></View>
+            <View style={styles.line} />
             <SButton onPress={() => navigate(ScreenEnum.GasPrice)}>
               <View style={styles.buttonWrapper}>
                 <SText textAlign="center" type="t4">
@@ -52,13 +51,16 @@ const MainScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+  },
   midleButtons: {
     backgroundColor: Colors.lightGrey,
     marginLeft: 15,
     marginRight: 15,
     borderRadius: 10,
     marginTop: 40,
-    marginBottom: 130
+    marginBottom: 120,
   },
   buttonWrapper: {
     padding: 20,

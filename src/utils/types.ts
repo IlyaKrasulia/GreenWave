@@ -8,7 +8,8 @@ export type StackParamList = {
   Balance: any,
   Coupons: any,
   User: any,
-  SaleStats: any
+  SaleStats: any,
+  Baners: any
 };
 
 
@@ -22,5 +23,6 @@ export enum ScreenEnum {
   Balance = 'Balance',
   Coupons = 'Coupons',
   User = 'User',
-  SaleStats= 'SaleStats'
+  SaleStats= 'SaleStats',
+  Baners = 'Baners'
 }

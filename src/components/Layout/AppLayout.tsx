@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {
+  Colors,
   STATUS_BAR_BACKGROUND,
   STATUS_BAR_STYLE,
   baseStyle,
@@ -20,6 +21,7 @@ interface IProps {
   barStyle?: StatusBarStyle;
   screenBackgroundColor?: ColorValue;
   screenViewStyle?: StyleProp<ViewStyle>;
+  upperBackgroundColor?: string,
 }
 
 export const AppLayout = ({
@@ -39,21 +41,26 @@ export const AppLayout = ({
   ), [barStyle]);
 
   return (
-    <SafeAreaView
-      style={[
-        baseStyle.screenView,
-        Boolean(screenBackgroundColor) ? {
-          backgroundColor: screenBackgroundColor,
-        } : {},
-        screenViewStyle,
-      ]}
-    >
-      <StatusBar
-        backgroundColor={_backgroundColor}
-        barStyle={_barStyle}
-        translucent={false}
+    <>
+      <SafeAreaView
+        style={{ flex: 0, backgroundColor: Colors.greenLine }}
       />
-      {children}
-    </SafeAreaView>
+      <SafeAreaView
+        style={[
+          baseStyle.screenView,
+          Boolean(screenBackgroundColor) ? {
+            backgroundColor: screenBackgroundColor,
+          } : {},
+          screenViewStyle,
+        ]}
+      >
+        <StatusBar
+          backgroundColor={_backgroundColor}
+          barStyle={_barStyle}
+          translucent={false}
+        />
+        {children}
+      </SafeAreaView>
+    </>
   );
 };
